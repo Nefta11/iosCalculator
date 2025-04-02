@@ -1,98 +1,101 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# iosCalculator
 
-# Getting Started
+Este es un nuevo proyecto de [**React Native**](https://reactnative.dev), creado utilizando [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Introducción
 
-## Step 1: Start Metro
+> **Nota**: Asegúrate de haber completado la guía [Configura tu entorno](https://reactnative.dev/docs/set-up-your-environment) antes de continuar.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### Paso 1: Iniciar Metro
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+Primero, necesitas ejecutar **Metro**, la herramienta de construcción de JavaScript para React Native.
+
+Para iniciar el servidor de desarrollo Metro, ejecuta el siguiente comando desde la raíz de tu proyecto React Native:
 
 ```sh
-# Using npm
+# Usando npm
 npm start
 
-# OR using Yarn
+# O usando Yarn
 yarn start
 ```
 
-## Step 2: Build and run your app
+### Paso 2: Construir y ejecutar tu aplicación
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+Con Metro en ejecución, abre una nueva ventana/pestaña de terminal desde la raíz de tu proyecto React Native y utiliza uno de los siguientes comandos para construir y ejecutar tu aplicación en Android o iOS:
 
-### Android
+#### Android
 
 ```sh
-# Using npm
+# Usando npm
 npm run android
 
-# OR using Yarn
+# O usando Yarn
 yarn android
 ```
 
-### iOS
+#### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+Para iOS, recuerda instalar las dependencias de CocoaPods (esto solo es necesario la primera vez o después de actualizar dependencias nativas).
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+1. La primera vez que crees un nuevo proyecto, ejecuta el bundler de Ruby para instalar CocoaPods:
+
+   ```sh
+   bundle install
+   ```
+
+2. Luego, y cada vez que actualices tus dependencias nativas, ejecuta:
+
+   ```sh
+   bundle exec pod install
+   ```
+
+   Para más información, visita la [guía de inicio de CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
+
+Finalmente, ejecuta:
 
 ```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+# Usando npm
 npm run ios
 
-# OR using Yarn
+# O usando Yarn
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+Si todo está configurado correctamente, deberías ver tu nueva aplicación ejecutándose en el emulador de Android, el simulador de iOS o tu dispositivo conectado.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+También puedes construir tu aplicación directamente desde Android Studio o Xcode.
 
-## Step 3: Modify your app
+### Paso 3: Modificar tu aplicación
 
-Now that you have successfully run the app, let's make changes!
+Ahora que has ejecutado la aplicación con éxito, ¡hagamos algunos cambios!
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Abre `App.tsx` en tu editor de texto favorito y realiza algunos cambios. Cuando guardes, tu aplicación se actualizará automáticamente para reflejar los cambios, gracias a [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+Para recargar manualmente, por ejemplo, para restablecer el estado de tu aplicación, puedes realizar una recarga completa:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+- **Android**: Presiona la tecla <kbd>R</kbd> dos veces o selecciona **"Reload"** desde el **Dev Menu**, al que puedes acceder con <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) o <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
+- **iOS**: Presiona <kbd>R</kbd> en el simulador de iOS.
 
-## Congratulations! :tada:
+## ¡Felicidades! 🎉
 
-You've successfully run and modified your React Native App. :partying_face:
+Has ejecutado y modificado con éxito tu aplicación React Native. 🎊
 
-### Now what?
+### ¿Qué sigue?
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- Si deseas agregar este código de React Native a una aplicación existente, consulta la [guía de integración](https://reactnative.dev/docs/integration-with-existing-apps).
+- Si tienes curiosidad por aprender más sobre React Native, consulta la [documentación](https://reactnative.dev/docs/getting-started).
 
-# Troubleshooting
+## Solución de problemas
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Si tienes problemas para que los pasos anteriores funcionen, consulta la página de [Solución de problemas](https://reactnative.dev/docs/troubleshooting).
 
-# Learn More
+## Aprende más
 
-To learn more about React Native, take a look at the following resources:
+Para aprender más sobre React Native, revisa los siguientes recursos:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
-# iosCalculator
+- [Sitio web de React Native](https://reactnative.dev) - Aprende más sobre React Native.
+- [Guía de inicio](https://reactnative.dev/docs/environment-setup) - Una **visión general** de React Native y cómo configurar tu entorno.
+- [Aprende lo básico](https://reactnative.dev/docs/getting-started) - Un **recorrido guiado** por los **fundamentos** de React Native.
+- [Blog](https://reactnative.dev/blog) - Lee las últimas publicaciones del **blog oficial** de React Native.
+- [`@facebook/react-native`](https://github.com/facebook/react-native) - El repositorio de código abierto en GitHub para React Native.

@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { styles } from '../../config/theme/app-theme';
 
 const CalculatorScreen = () => {
@@ -8,7 +8,14 @@ const CalculatorScreen = () => {
                 <Text style={styles.mainResult}>1500</Text>
                 <Text style={styles.subResult}>15</Text>
             </View>
-        </View>
+
+            <View style={{ flexDirection: 'row' }}>
+                <Pressable>
+                    <Text>Holaa Mundo </Text>
+                </Pressable>
+            </View>
+
+        </View >
     );
 };
 

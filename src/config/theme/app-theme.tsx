@@ -11,4 +11,8 @@ export const colors = {
 };
 
 export const styles = StyleSheet.create({
+    backhround: {
+        flex: 1,
+        backgroundColor: colors.background,
+    },
 });

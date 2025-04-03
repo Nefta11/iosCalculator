@@ -3,7 +3,7 @@ import { styles } from '../../config/theme/app-theme';
 
 const CalculatorScreen = () => {
     return (
-        <View >
+        <View style={styles.calculatorContainer} >
             <Text style={styles.mainResult}>1500</Text>
             <Text style={styles.subResult}>15</Text>
         </View>

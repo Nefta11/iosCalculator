@@ -16,6 +16,12 @@ export const styles = StyleSheet.create({
         backgroundColor: colors.background,
     },
 
+    calculatorContainer: {
+        flex: 1,
+        padding: 20,
+        justifyContent: 'flex-end',
+    },
+
     mainResult: {
         color: colors.textPrimary,
         fontSize: 70,

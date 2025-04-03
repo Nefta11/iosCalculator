@@ -1,24 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
+import {  Text, View } from 'react-native';
+import { styles } from '../../config/theme/app-theme';
 
 const CalculatorScreen = () => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Calculator</Text>
+        <View >
+            <Text style={styles.mainResult}>1500</Text>
+            <Text style={styles.subResult}>15</Text>
         </View>
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    text: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-        color: '#fff',
-    },
-});
+
 export default CalculatorScreen;

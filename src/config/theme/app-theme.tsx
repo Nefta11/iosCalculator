@@ -15,4 +15,19 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.background,
     },
+
+    mainResult: {
+        color: colors.textPrimary,
+        fontSize: 70,
+        textAlign: 'right',
+        marginBottom: 10,
+        fontWeight: '400',
+    },
+
+    subResult: {
+        color: colors.textSecondary,
+        fontSize: 40,
+        textAlign: 'right',
+        fontWeight: '300',
+    },
 });

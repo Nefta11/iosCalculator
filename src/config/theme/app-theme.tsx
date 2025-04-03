@@ -36,4 +36,9 @@ export const styles = StyleSheet.create({
         textAlign: 'right',
         fontWeight: '300',
     },
+
+    paddingContainer: {
+        paddingHorizontal: 30,
+        paddingBottom: 30,
+    },
 });

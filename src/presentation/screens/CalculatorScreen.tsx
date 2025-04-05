@@ -11,9 +11,9 @@ const CalculatorScreen = () => {
             </View>
 
             <View style={styles.row}>
-                <CalculatorButton label="C" color={colors.lightGray} />
-                <CalculatorButton label="+/-" color={colors.lightGray} />
-                <CalculatorButton label="del" color={colors.lightGray} />
+                <CalculatorButton blackText label="C" color={colors.lightGray} />
+                <CalculatorButton blackText label="+/-" color={colors.lightGray} />
+                <CalculatorButton blackText label="del" color={colors.lightGray} />
                 <CalculatorButton label="÷" color={colors.orange} />
             </View>
 

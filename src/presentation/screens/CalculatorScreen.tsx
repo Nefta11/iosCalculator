@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import { styles } from '../../config/theme/app-theme';
+import { colors, styles } from '../../config/theme/app-theme';
 import CalculatorButton from '../components/CalculatorButton';
 
 const CalculatorScreen = () => {
@@ -11,10 +11,10 @@ const CalculatorScreen = () => {
             </View>
 
             <View style={styles.row}>
-                <CalculatorButton label="C" />
-                <CalculatorButton label="+/-" />
-                <CalculatorButton label="del" />
-                <CalculatorButton label="/" />
+                <CalculatorButton label="C" color={colors.lightGray} />
+                <CalculatorButton label="+/-" color={colors.lightGray} />
+                <CalculatorButton label="del" color={colors.lightGray} />
+                <CalculatorButton label="/" color={colors.orange} />
 
             </View>
 

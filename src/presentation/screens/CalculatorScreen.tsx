@@ -13,15 +13,7 @@ const CalculatorScreen = () => {
                 <Pressable style={styles.button}>
                     <Text style={styles.buttonText}>1</Text>
                 </Pressable>
-                <Pressable style={styles.button}>
-                    <Text style={styles.buttonText}>2</Text>
-                </Pressable>
-                <Pressable style={styles.button}>
-                    <Text style={styles.buttonText}>3</Text>
-                </Pressable>
-                <Pressable style={styles.button}>
-                    <Text style={styles.buttonText}>+</Text>
-                </Pressable>
+
             </View>
 
         </View >

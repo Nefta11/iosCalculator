@@ -1,5 +1,6 @@
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { styles } from '../../config/theme/app-theme';
+import CalculatorButton from '../components/CalculatorButton';
 
 const CalculatorScreen = () => {
     return (
@@ -10,10 +11,7 @@ const CalculatorScreen = () => {
             </View>
 
             <View style={styles.row}>
-                <Pressable style={styles.button}>
-                    <Text style={styles.buttonText}>1</Text>
-                </Pressable>
-
+                <CalculatorButton />
             </View>
 
         </View >

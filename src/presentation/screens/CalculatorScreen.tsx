@@ -11,7 +11,7 @@ const CalculatorScreen = () => {
             </View>
 
             <View style={styles.row}>
-                <CalculatorButton />
+                <CalculatorButton label="" />
             </View>
 
         </View >

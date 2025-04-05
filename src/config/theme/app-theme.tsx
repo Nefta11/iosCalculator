@@ -42,6 +42,13 @@ export const styles = StyleSheet.create({
         paddingBottom: 30,
     },
 
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom: 18,
+        paddingHorizontal: 10,
+    },
+
     button: {
         width: 80,
         height: 80,

@@ -41,4 +41,18 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 30,
         paddingBottom: 30,
     },
+
+    button: {
+        width: 80,
+        height: 80,
+        backgroundColor: colors.darkGray,
+        borderRadius: 100,
+        justifyContent: 'center',
+        marginHorizontal: 10,
+    },
+    buttonText: {
+        textAlign: 'center',
+        fontSize: 30,
+        color: 'white',
+    },
 });

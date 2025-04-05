@@ -10,8 +10,8 @@ const CalculatorScreen = () => {
             </View>
 
             <View style={{ flexDirection: 'row' }}>
-                <Pressable>
-                    <Text>Holaa Mundo </Text>
+                <Pressable  style={styles.button}>
+                    <Text style={styles.buttonText}>Holaa Mundo </Text>
                 </Pressable>
             </View>
 

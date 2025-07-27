@@ -7,11 +7,13 @@ interface Props {
     color?: string;
     dobleSize?: boolean;
     blackText?: boolean;
+    onPress: () => void;
 }
 
-const CalculatorButton: React.FC<Props> = ({ label, color = colors.darkGray, dobleSize = false, blackText = false }) => {
+const CalculatorButton: React.FC<Props> = ({ label, color = colors.darkGray, dobleSize = false, blackText = false, onPress }) => {
     return (
         <Pressable
+            onPress={() => onPress()}
             style={({ pressed }) => ({
                 ...styles.button,
                 backgroundColor: color,

@@ -4,6 +4,21 @@ export const useCalculator = () => {
 
     const [number, setNumber] = useState('0');
 
+
+    const clean = () => {
+        setNumber('0');
+    }
+
+    //Borra el ultimo número ingresado
+    const deleteOperation = () => {
+        if (number.length === 1) {
+            return setNumber('0');
+        }
+
+        const newNumber = number.slice(0, -1);
+        setNumber(newNumber);
+    }
+
     const buildNumber = (numberString: string) => {
         if (number.includes('.') && numberString === '.') return;
 
@@ -39,7 +54,9 @@ export const useCalculator = () => {
         number,
 
         // Methods
-        buildNumber
+        buildNumber,
+        clean,
+        deleteOperation
     }
 
 }

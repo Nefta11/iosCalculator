@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+
+enum Operator {
+    add,
+    subtract,
+    multiply,
+    divide,
+}
 
 export const useCalculator = () => {
 
     const [number, setNumber] = useState('0');
+    const [prevsNumber, setPrevsNumber] = useState('0');
 
+    const lastOperation = useRef<Operator | undefined>(undefined);
 
     const clean = () => {
         setNumber('0');
+        setPrevsNumber('0');
     };
 
     //Borra el ultimo número ingresado
@@ -65,16 +75,46 @@ export const useCalculator = () => {
         setNumber(number + numberString);
     };
 
+    const setLastNumber = () => {
+        if (number.endsWith('.')) {
+            setPrevsNumber(number.slice(0, -1));
+        } else {
+            setPrevsNumber(number);
+        }
+        setNumber('0');
+    };
+
+    const divideOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.divide;
+    };
+    const multiplyOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.multiply;
+    };
+    const subtractOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.subtract;
+    };
+    const addOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.add;
+    };
+
 
     return {
         // Properties
         number,
+        prevsNumber,
 
         // Methods
         buildNumber,
         clean,
         deleteOperation,
         toggleSign,
+        divideOperation,
+        multiplyOperation,
+        subtractOperation,
+        addOperation,
     };
-
 };

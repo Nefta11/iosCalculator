@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export const useCalculator = () => {
 
@@ -7,17 +7,23 @@ export const useCalculator = () => {
 
     const clean = () => {
         setNumber('0');
-    }
+    };
 
     //Borra el ultimo número ingresado
     const deleteOperation = () => {
-        if (number.length === 1) {
-            return setNumber('0');
+        let currentSign = '';
+        let temporalNumber = number;
+
+        if (number.includes('-')) {
+            currentSign = '-';
+            temporalNumber = number.substring(1);
         }
 
-        const newNumber = number.slice(0, -1);
-        setNumber(newNumber);
-    }
+        if (temporalNumber.length > 1) {
+            return setNumber(currentSign + temporalNumber.slice(0, -1));
+        }
+        setNumber('0');
+    };
 
     // Cambia el signo del número
     // Si el número es negativo, lo convierte en positivo y viceversa
@@ -27,10 +33,12 @@ export const useCalculator = () => {
         }
 
         setNumber('-' + number);
-    }
+    };
 
     const buildNumber = (numberString: string) => {
-        if (number.includes('.') && numberString === '.') return;
+        if (number.includes('.') && numberString === '.') {
+            return;
+        }
 
         if (number.startsWith('0') || number.startsWith('-0')) {
 
@@ -38,11 +46,10 @@ export const useCalculator = () => {
             if (numberString === '.') {
                 return setNumber(number + numberString);
             }
-            // Evaluar si es otro cero y no hay punto 
+            // Evaluar si es otro cero y no hay punto
             if (numberString === '0' && number.includes('.')) {
                 return setNumber(number + numberString);
             }
-
             // Evaluar si es diferente de cero, no hay punto decimal y es el primer numero
             if (numberString !== '0' && !number.includes('.')) {
                 return setNumber(numberString);
@@ -56,7 +63,7 @@ export const useCalculator = () => {
         }
 
         setNumber(number + numberString);
-    }
+    };
 
 
     return {
@@ -67,7 +74,7 @@ export const useCalculator = () => {
         buildNumber,
         clean,
         deleteOperation,
-        toggleSign
-    }
+        toggleSign,
+    };
 
-}
+};

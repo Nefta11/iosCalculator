@@ -19,6 +19,16 @@ export const useCalculator = () => {
         setNumber(newNumber);
     }
 
+    // Cambia el signo del número
+    // Si el número es negativo, lo convierte en positivo y viceversa
+    const toggleSign = () => {
+        if (number.includes('-')) {
+            return setNumber(number.replace('-', ''));
+        }
+
+        setNumber('-' + number);
+    }
+
     const buildNumber = (numberString: string) => {
         if (number.includes('.') && numberString === '.') return;
 
@@ -56,7 +66,8 @@ export const useCalculator = () => {
         // Methods
         buildNumber,
         clean,
-        deleteOperation
+        deleteOperation,
+        toggleSign
     }
 
 }

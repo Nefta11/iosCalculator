@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 
 enum Operator {
-    add,
-    subtract,
-    multiply,
-    divide,
+    add = '+',
+    subtract = '-',
+    multiply = 'x',
+    divide = '/',
 }
 
 export const useCalculator = () => {

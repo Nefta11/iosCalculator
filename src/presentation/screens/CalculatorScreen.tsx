@@ -5,7 +5,7 @@ import { useCalculator } from '../hooks/useCalculator';
 
 const CalculatorScreen = () => {
 
-    const { number, buildNumber, clean, deleteOperation, toggleSign, divideOperation, multiplyOperation, subtractOperation, addOperation, prevsNumber, calculateResult } = useCalculator();
+    const { formula, number, buildNumber, clean, deleteOperation, toggleSign, divideOperation, multiplyOperation, subtractOperation, addOperation, prevsNumber, calculateResult } = useCalculator();
 
     return (
         <View style={styles.calculatorContainer}>
@@ -13,7 +13,7 @@ const CalculatorScreen = () => {
                 <Text
                     adjustsFontSizeToFit
                     numberOfLines={1}
-                    style={styles.mainResult}>{number}</Text>
+                    style={styles.mainResult}>{formula}</Text>
                 <Text
                     adjustsFontSizeToFit
                     numberOfLines={1}

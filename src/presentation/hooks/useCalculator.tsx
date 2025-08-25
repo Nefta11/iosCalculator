@@ -9,10 +9,14 @@ enum Operator {
 
 export const useCalculator = () => {
 
+    const [formula, setFormula] = useState ('0');
+
     const [number, setNumber] = useState('0');
     const [prevsNumber, setPrevsNumber] = useState('0');
 
     const lastOperation = useRef<Operator | undefined>(undefined);
+
+
 
     const clean = () => {
         setNumber('0');
@@ -130,6 +134,7 @@ export const useCalculator = () => {
         // Properties
         number,
         prevsNumber,
+        formula,
 
         // Methods
         buildNumber,

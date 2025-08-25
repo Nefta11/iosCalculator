@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 enum Operator {
     add = '+',
@@ -10,27 +10,61 @@ enum Operator {
 export const useCalculator = () => {
 
     const [formula, setFormula] = useState('0');
-
     const [number, setNumber] = useState('0');
     const [prevsNumber, setPrevsNumber] = useState('0');
 
     const lastOperation = useRef<Operator | undefined>(undefined);
+    const originalNumber = useRef<string>('0'); // Para guardar el número original
+    const justCalculated = useRef<boolean>(false); // Para saber si acabamos de calcular
+
+    const calculateSubResult = useCallback((): number => {
+        if (!lastOperation.current) {
+            return Number(originalNumber.current);
+        }
+
+        const num1 = Number(originalNumber.current);
+        const num2 = Number(number);
+
+        if (isNaN(num2) || number === '0') {
+            return num1;
+        }
+
+        switch (lastOperation.current) {
+            case Operator.add:
+                return num1 + num2;
+            case Operator.subtract:
+                return num1 - num2;
+            case Operator.multiply:
+                return num1 * num2;
+            case Operator.divide:
+                return num1 / num2;
+            default:
+                return num1;
+        }
+    }, [number]);
 
     useEffect(() => {
-
         if (lastOperation.current) {
-            const firstFormulaPart = prevsNumber;
-            setFormula(`${firstFormulaPart} ${lastOperation.current} ${number}`);
+            setFormula(`${originalNumber.current} ${lastOperation.current} ${number}`);
+            
+            // Calcular el sub-resultado
+            if (number !== '0' && !number.endsWith('.')) {
+                const subResult = calculateSubResult();
+                if (!isNaN(subResult) && isFinite(subResult)) {
+                    setPrevsNumber(`${subResult}`);
+                }
+            }
         } else {
             setFormula(number);
         }
-
-    }, [number, prevsNumber]);
+    }, [number, calculateSubResult]);
 
     const clean = () => {
         setNumber('0');
         setPrevsNumber('0');
         lastOperation.current = undefined;
+        originalNumber.current = '0';
+        justCalculated.current = false;
         setFormula('0');
     };
 
@@ -61,6 +95,15 @@ export const useCalculator = () => {
     };
 
     const buildNumber = (numberString: string) => {
+        // Si acabamos de calcular y empezamos a escribir un nuevo número, empezar de cero
+        if (justCalculated.current) {
+            justCalculated.current = false;
+            if (numberString === '.') {
+                return setNumber('0.');
+            }
+            return setNumber(numberString);
+        }
+
         if (number.includes('.') && numberString === '.') {
             return;
         }
@@ -91,11 +134,27 @@ export const useCalculator = () => {
     };
 
     const setLastNumber = () => {
+        let numberToSave = number;
         if (number.endsWith('.')) {
-            setPrevsNumber(number.slice(0, -1));
-        } else {
-            setPrevsNumber(number);
+            numberToSave = number.slice(0, -1);
         }
+        
+        // Si acabamos de calcular un resultado, usar ese resultado como base
+        if (justCalculated.current) {
+            originalNumber.current = number;
+            setPrevsNumber(number);
+            justCalculated.current = false;
+        }
+        // Si ya hay una operación en curso, calcular el resultado primero
+        else if (lastOperation.current && originalNumber.current !== '0') {
+            const result = calculateSubResult();
+            originalNumber.current = `${result}`;
+            setPrevsNumber(`${result}`);
+        } else {
+            originalNumber.current = numberToSave;
+            setPrevsNumber(numberToSave);
+        }
+        
         setNumber('0');
     };
 
@@ -118,37 +177,13 @@ export const useCalculator = () => {
 
     // Aquí podrías implementar la lógica para calcular el resultado basado en lastOperation
     const calculateResult = () => {
-
         const result = calculateSubResult();
         setFormula(`${result}`);
         setNumber(`${result}`);
         lastOperation.current = undefined;
+        originalNumber.current = '0';
         setPrevsNumber('0');
-    };
-
-    const calculateSubResult = (): number => {
-
-        const [firstValue, operation, secondValue] = formula.split(' ');
-
-        const num1 = Number(firstValue);
-        const num2 = Number(secondValue);
-
-        if (isNaN(num2) || !operation) {
-            return num1;
-        }
-
-        switch (operation) {
-            case Operator.add:
-                return num1 + num2;
-            case Operator.subtract:
-                return num1 - num2;
-            case Operator.multiply:
-                return num1 * num2;
-            case Operator.divide:
-                return num1 / num2;
-            default:
-                return num1;
-        }
+        justCalculated.current = true; // Marcamos que acabamos de calcular
     };
 
     return {

@@ -46,7 +46,7 @@ export const useCalculator = () => {
     useEffect(() => {
         if (lastOperation.current) {
             setFormula(`${originalNumber.current} ${lastOperation.current} ${number}`);
-            
+
             // Calcular el sub-resultado
             if (number !== '0' && !number.endsWith('.')) {
                 const subResult = calculateSubResult();
@@ -138,7 +138,7 @@ export const useCalculator = () => {
         if (number.endsWith('.')) {
             numberToSave = number.slice(0, -1);
         }
-        
+
         // Si acabamos de calcular un resultado, usar ese resultado como base
         if (justCalculated.current) {
             originalNumber.current = number;
@@ -154,7 +154,7 @@ export const useCalculator = () => {
             originalNumber.current = numberToSave;
             setPrevsNumber(numberToSave);
         }
-        
+
         setNumber('0');
     };
 

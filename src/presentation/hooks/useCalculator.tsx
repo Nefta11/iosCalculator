@@ -119,6 +119,13 @@ export const useCalculator = () => {
     // Aquí podrías implementar la lógica para calcular el resultado basado en lastOperation
     const calculateResult = () => {
 
+        calculateSubResult();
+
+
+        setPrevsNumber('0');
+    };
+
+    const calculateSubResult = () => {
         const num1 = Number(number);
         const num2 = Number(prevsNumber);
 
@@ -138,9 +145,8 @@ export const useCalculator = () => {
             default:
                 throw new Error('Invalid operation');
         }
-
-        setPrevsNumber('0');
     };
+
     return {
         // Properties
         number,
@@ -156,6 +162,6 @@ export const useCalculator = () => {
         multiplyOperation,
         subtractOperation,
         addOperation,
-        calculateResult
+        calculateResult,
     };
 };

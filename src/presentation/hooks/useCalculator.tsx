@@ -125,23 +125,26 @@ export const useCalculator = () => {
         setPrevsNumber('0');
     };
 
-    const calculateSubResult = () => {
-        const num1 = Number(number);
-        const num2 = Number(prevsNumber);
+    const calculateSubResult = (): number => {
 
-        switch (lastOperation.current) {
+        const [firstValue, operation, secondValue] = formula.split(' ');
+
+        const num1 = Number(firstValue);
+        const num2 = Number(secondValue);
+
+        if (isNaN(num2)) {
+            return num1;
+        }
+
+        switch (operation) {
             case Operator.add:
-                setNumber(`${num1 + num2}`);
-                break;
+                return num1 + num2;
             case Operator.subtract:
-                setNumber(`${num2 - num1}`);
-                break;
+                return num2 - num1;
             case Operator.multiply:
-                setNumber(`${num1 * num2}`);
-                break;
+                return num1 * num2;
             case Operator.divide:
-                setNumber(`${num2 / num1}`);
-                break;
+                return num2 / num1;
             default:
                 throw new Error('Invalid operation');
         }

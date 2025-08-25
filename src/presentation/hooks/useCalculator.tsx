@@ -19,13 +19,13 @@ export const useCalculator = () => {
     useEffect(() => {
 
         if (lastOperation.current) {
-            const firstFormulaPart = formula.split('').at(0);
+            const firstFormulaPart = prevsNumber;
             setFormula(`${firstFormulaPart} ${lastOperation.current} ${number}`);
         } else {
             setFormula(number);
         }
 
-    }, [number, formula]);
+    }, [number, prevsNumber]);
 
     const clean = () => {
         setNumber('0');
@@ -121,6 +121,7 @@ export const useCalculator = () => {
 
         const result = calculateSubResult();
         setFormula(`${result}`);
+        setNumber(`${result}`);
         lastOperation.current = undefined;
         setPrevsNumber('0');
     };
@@ -132,7 +133,7 @@ export const useCalculator = () => {
         const num1 = Number(firstValue);
         const num2 = Number(secondValue);
 
-        if (isNaN(num2)) {
+        if (isNaN(num2) || !operation) {
             return num1;
         }
 
@@ -146,7 +147,7 @@ export const useCalculator = () => {
             case Operator.divide:
                 return num1 / num2;
             default:
-                throw new Error('Invalid operation');
+                return num1;
         }
     };
 

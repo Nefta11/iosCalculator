@@ -119,9 +119,9 @@ export const useCalculator = () => {
     // Aquí podrías implementar la lógica para calcular el resultado basado en lastOperation
     const calculateResult = () => {
 
-        calculateSubResult();
-
-
+        const result = calculateSubResult();
+        setFormula(`${result}`);
+        lastOperation.current = undefined;
         setPrevsNumber('0');
     };
 

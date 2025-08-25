@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 enum Operator {
     add = '+',
@@ -9,18 +9,29 @@ enum Operator {
 
 export const useCalculator = () => {
 
-    const [formula, setFormula] = useState ('0');
+    const [formula, setFormula] = useState('0');
 
     const [number, setNumber] = useState('0');
     const [prevsNumber, setPrevsNumber] = useState('0');
 
     const lastOperation = useRef<Operator | undefined>(undefined);
 
+    useEffect(() => {
 
+        if (lastOperation.current) {
+            const firstFormulaPart = formula.split('').at(0);
+            setFormula(`${firstFormulaPart} ${lastOperation.current} ${number}`);
+        } else {
+            setFormula(number);
+        }
+
+    }, [number, formula]);
 
     const clean = () => {
         setNumber('0');
         setPrevsNumber('0');
+        lastOperation.current = undefined;
+        setFormula('0');
     };
 
     //Borra el ultimo número ingresado
